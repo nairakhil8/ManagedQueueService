@@ -14,12 +14,6 @@ public class Main {
         new Thread(producer2).start();
         new Thread(producer3).start();
 
-        try {
-            Thread.sleep(1000); // Give producers some time to produce data
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-
         Consumer<Object> consumer1 = new Consumer<>(queueService, 1, "topic1");
         consumer1.subscribe();
         new Thread(consumer1).start();
